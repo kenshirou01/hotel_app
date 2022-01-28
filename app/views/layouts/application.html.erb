@@ -6,47 +6,50 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
     <header class = "header" >
+
       <div class = "header_inner" >
+
         <div class = "header-left-nav" >
-
-          <a href="">
-            <%= image_tag "sait_logo.png" %>
-          </a>
-
+            <%= link_to image_tag("sait_logo.png"), home_index_path %>
         </div>
 
         <div class = "header-right-nav" >
 
-          <div class = "nav-item" >
-
-            <% if user_signed_in? %>
-
-              <h4><%= current_user.name %></h4>
-
-              <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-primary", method: :delete %>
-
-
-
-            <% else %>
-
+          <% if user_signed_in? %>
+            <div class = "nav-item">
+              <%= current_user.name %>
+            </div>
+            <div class = "nav-item" >
+              <label for="toggle" onclick=""  for="menuToggle">
+                <%= image_tag("default_icon.jpeg",class: "host-icon p-1") %>
+              </label>
+              <input type="checkbox" id="toggle" autocomplete="off">
+                <ul class = "menu_list" >
+                  <li>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  </li>
+                  <li>
+                    <%= link_to "設定", users_show_path %>
+                  </li>
+                  <li>LIST3</li>
+                </ul>
+          <% else %>
               <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
               <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
+          <% end %>
+            </div>
 
-            <% end %>
-          </div>
         </div>
       </div>
+
     </header>
-
     <%= yield %>
-
     <footer class = "footer" >
       <p>@ 2021 Kenshirou.Fjisawa.</p>
     </footer>

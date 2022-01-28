@@ -1,0 +1,10 @@
+<div class="user_nav_pc d-lg-block col-lg-2">
+  <ul>
+    <li class="active-nav">
+      <%= link_to "アカウント" , users_show_path(@user) , class:"account_link"%>
+    </li>
+    <li class="active-nav">
+      <%= link_to "プロフィール" , edit_user_path(@user), class:"account_link" %>
+    </li>
+  </ul>
+</div>

@@ -16,7 +16,7 @@
       <div class = "header_inner" >
 
         <div class = "header-left-nav" >
-            <%= link_to image_tag("sait_logo.png"), home_index_path %>
+            <%= link_to image_tag("sait_logo.png"), users_path %>
         </div>
 
         <div class = "header-right-nav" >
@@ -27,7 +27,11 @@
             </div>
             <div class = "nav-item" >
               <label for="toggle" onclick=""  for="menuToggle">
-                <%= image_tag("default_icon.jpeg",class: "host-icon p-1") %>
+                <% if @user.image? %>
+                  <%= image_tag(@user.image.url, class: "host-icon p-1") %>
+                <% else %>
+                  <%= image_tag("default_icon.jpeg",class: "host-icon p-1") %>
+                <% end %>
               </label>
               <input type="checkbox" id="toggle" autocomplete="off">
                 <ul class = "menu_list" >
@@ -37,11 +41,10 @@
                   <li>
                     <%= link_to "設定", users_show_path %>
                   </li>
-                  <li>LIST3</li>
                 </ul>
           <% else %>
               <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
-              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
+              <%= link_to "登録する", new_user_registration_path, class: "btn btn-secondary" %>
           <% end %>
             </div>
 

@@ -1,4 +1,4 @@
 class Room < ApplicationRecord
   belongs_to :user
-  mount_uploader :room_image, ImageUploader
+  mount_uploader :room_image, ImagesUploader
 end

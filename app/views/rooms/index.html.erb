@@ -13,7 +13,7 @@
   <tbody>
     <% @rooms.each do |f| %>
       <tr>
-        <td><%= image_tag f.image.url %></td>
+        <td><%= image_tag(f.room_image.to_s) %></td>
         <td><%= f.room_name %></td>
         <td><%= f.room_introduction %></td>
         <td><%= f.room_price %></td>

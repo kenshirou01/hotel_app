@@ -1,0 +1,24 @@
+<h3>登録済みルーム一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>ルーム紹介</th>
+      <th>料金</th>
+      <th>作成日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |f| %>
+      <tr>
+        <td><%= image_tag f.image.url %></td>
+        <td><%= f.room_name %></td>
+        <td><%= f.room_introduction %></td>
+        <td><%= f.room_price %></td>
+        <td><%= f.created_at.to_s(:datetime_jp) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -8,16 +8,18 @@
       <th>ルーム紹介</th>
       <th>料金</th>
       <th>作成日</th>
+      <th>削除</th>
     </tr>
   </thead>
   <tbody>
     <% @rooms.each do |f| %>
       <tr>
-        <td><%= image_tag(f.room_image.to_s) %></td>
+        <td><%= image_tag(f.room_image.to_s, class: "room-posts-image") %></td>
         <td><%= f.room_name %></td>
         <td><%= f.room_introduction %></td>
         <td><%= f.room_price %></td>
         <td><%= f.created_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to "削除", f, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
       </tr>
     <% end %>
   </tbody>

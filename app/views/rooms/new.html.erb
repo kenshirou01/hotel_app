@@ -1,12 +1,5 @@
 <h3>ルーム情報登録</h3>
 
-<% if flash[:notice_green] %>
-  <p class = notice_green ><%= flash[:notice_green] %></p>
-<% elsif flash[:notice_red] %>
-  <p class = notice_red ><%= flash[:notice_red] %></p>
-<% end %>
-<%= render "shared/error", obj: @room %>
-
 <%= form_with model: @room do |f| %>
 <%= f.hidden_field :user_id, value: @user.id %>
   <table>

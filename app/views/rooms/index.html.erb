@@ -12,15 +12,17 @@
     </tr>
   </thead>
   <tbody>
-    <% @rooms.each do |f| %>
-      <tr>
-        <td><%= image_tag(f.room_image.to_s, class: "room-posts-image") %></td>
-        <td><%= f.room_name %></td>
-        <td><%= f.room_introduction %></td>
-        <td><%= f.room_price %></td>
-        <td><%= f.created_at.to_s(:datetime_jp) %></td>
-        <td><%= link_to "削除", f, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
-      </tr>
+    <% @rooms.each do |room| %>
+      <% if room.user_id == @user.id %>
+        <tr>
+          <td><%= image_tag(room.room_image.to_s, class: "room-posts-image") %></td>
+          <td><%= link_to (room.room_name), room %></td>
+          <td><%= room.room_introduction %></td>
+          <td><%= room.room_price %></td>
+          <td><%= room.created_at.to_s(:datetime_jp) %></td>
+          <td><%= link_to "削除", room, method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

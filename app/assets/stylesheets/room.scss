@@ -3,3 +3,22 @@
   height: 140px;
   object-fit: cover;
 }
+
+.room-show-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.col-md-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+td div.field_with_errors {
+  background-color: red;
+  padding: 2px;
+}

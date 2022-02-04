@@ -1,5 +1,4 @@
 <div class = "row">
-
   <div class = "col-md-8">
     <%= image_tag(@room.room_image.to_s, class: "room-show-image") %>
     <div>
@@ -17,11 +16,14 @@
   </div>
 
   <div>
+    <% if flash[:notice] %>
+      <p class = notice ><%= flash[:notice] %></p>
+    <% end %>
     <h5><%= @room.room_price %>/ 日</h5>
-
     <%= form_with model: @reservation, url: new_reservation_path do |f| %>
       <%= f.hidden_field :room_id, value: @room.id %>
       <%= f.hidden_field :user_id, value: @user.id %>
+      <%=%>
       <table>
         <tr>
           <th><%= f.label :start_date, "開始日" %></th>

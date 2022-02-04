@@ -19,7 +19,7 @@
           <td><%= image_tag(reservation.room.room_image.to_s, class: "room-posts-image") %></td>
           <td><%= reservation.room.room_name %></td>
           <td><%= reservation.room.room_introduction %></td>
-          <td><%= reservation.room.room_price %></td>
+          <td>¥<%= reservation.total_amount %></td>
 
         <td><%= reservation.start_date %></td>
         <td><%= reservation.end_date %></td>

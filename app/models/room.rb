@@ -10,4 +10,5 @@ class Room < ApplicationRecord
     validates :room_address
     validates :room_image
   end
+
 end

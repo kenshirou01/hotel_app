@@ -12,11 +12,19 @@
 
   <body>
     <header class = "header" >
-
       <div class = "header_inner" >
-
         <div class = "header-left-nav" >
-            <%= link_to image_tag("sait_logo.png"), users_path %>
+          <%= link_to image_tag("sait_logo.png"), users_path %>
+
+            <%= search_form_for @search, url: search_rooms_path do |f| %>
+              <div class="header-sharch d-lg-inline-block">
+                <%= f.search_field :room_address_cont, placeholder: "エリア", :id => 'area', :class => 'form-control' %>
+              </div>
+              <div class="header-sharch d-lg-inline-block">
+                <%= f.search_field :room_introduction_or_room_name_or_room_address_cont, placeholder: "キーワード", :id => 'area', :class => 'form-control' %>
+              </div>
+                <%= f.submit '検索', :class => "d-none" %>
+            <% end %>
         </div>
 
         <div class = "header-right-nav" >

@@ -16,11 +16,10 @@
     <% @reservations.each do |reservation| %>
     <% if reservation.user_id == @user.id %>
       <tr>
-          <td><%= image_tag(reservation.room.room_image.to_s, class: "room-posts-image") %></td>
-          <td><%= reservation.room.room_name %></td>
-          <td><%= reservation.room.room_introduction %></td>
-          <td>¥<%= reservation.total_amount %></td>
-
+        <td><%= image_tag(reservation.room.room_image.to_s, class: "room-posts-image") %></td>
+        <td><%= link_to (reservation.room.room_name), reservation %></td>
+        <td><%= reservation.room.room_introduction %></td>
+        <td>¥<%= reservation.total_amount %></td>
         <td><%= reservation.start_date %></td>
         <td><%= reservation.end_date %></td>
         <td><%= reservation.created_at.to_s(:datetime_jp) %></td>

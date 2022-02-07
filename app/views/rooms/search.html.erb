@@ -1,0 +1,15 @@
+<div class="container-fiuld room">
+  <h4 class="pb-4">検索結果</h4>
+  <div class="">
+    <% @rooms.each do |room| %>
+      <div class="">
+        <%= link_to image_tag(room.room_image.to_s, class: ""), room %>
+      </div>
+      <div>
+        <p><%= room.room_name %></p>
+        <p><%= room.room_address %></p>
+        <p>¥<%= room.room_price %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

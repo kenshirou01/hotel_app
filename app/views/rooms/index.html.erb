@@ -8,6 +8,7 @@
       <th>ルーム紹介</th>
       <th>料金</th>
       <th>作成日</th>
+      <th>住所</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,7 @@
           <td><%= link_to (room.room_name), room %></td>
           <td><%= room.room_introduction %></td>
           <td>¥<%= room.room_price %></td>
+          <td><%= room.room_address %></td>
           <td><%= room.created_at.to_s(:datetime_jp) %></td>
         </tr>
       <% end %>

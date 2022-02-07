@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   post 'reservations/show'
   post 'rooms/show'
   root to: 'users#index'
-  resources :users
-  resources :rooms
   resources :reservations
+  resources :users
+  resources :rooms do
+    collection do
+      get :search
+    end
+  end
 end

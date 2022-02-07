@@ -23,7 +23,6 @@ class ReservationsController < ApplicationController
       end
       @reservation.total_day = @reservation.days
       @reservation.total_amount = @reservation.amount
-
     end
   end
 
@@ -37,6 +36,9 @@ class ReservationsController < ApplicationController
     else
       redirect_to room_path(@reservation.room_id)
     end
+
+  binding.pry
+
   end
 
   def show

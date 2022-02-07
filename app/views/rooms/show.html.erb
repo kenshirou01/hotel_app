@@ -20,7 +20,7 @@
       <p class = notice ><%= flash[:notice] %></p>
     <% end %>
     <h5><%= @room.room_price %>/ 日</h5>
-    <%= form_with model: @reservation, url: new_reservation_path do |f| %>
+    <%= form_with model: @reservation, url: new_reservation_path, method: :get do |f| %>
       <%= f.hidden_field :room_id, value: @room.id %>
       <%= f.hidden_field :user_id, value: @user.id %>
       <%=%>

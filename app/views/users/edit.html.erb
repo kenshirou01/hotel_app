@@ -1,39 +1,58 @@
+
 <div class="container-fiuld user">
   <div class="row">
+    <%= render "shared/said_menu2" %>
+    <div class="col-md-10 user-view">
+      <div class="user-view-box">
 
-    <%= render "shared/said_menu" %>
+        <div class="update-content">
+          <div class="row">
+            <h5>プロフィール</h5>
+          </div>
+        </div>
 
-    <h2>プロフィール</h2>
+        <%= form_with model: @user do |f| %>
 
-    <%= form_with model: @user do |f| %>
+          <div class="update-content">
+            <div class="row">
+              <% if @user.image? %>
+                <%= image_tag(@user.image.url, class: "icon-image host-icon") %>
+              <% else %>
+                <%= image_tag("default_icon.jpeg", class: "host-icon p-1") %>
+              <% end %>
+            </div>
+          </div>
 
-      <% if @user.image? %>
-        <%= image_tag(@user.image.url, class: "icon-image host-icon") %>
-      <% else %>
-        <%= image_tag("default_icon.jpeg", class: "host-icon p-1") %>
-      <% end %>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :image, class: "required-a col-md-3" %>
+              <%= f.file_field :image, class: "my-4 col-md-9 column" %>
+            </div>
+          </div>
 
-      <div class="field">
-        <%= f.label :image %><br/>
-        <%= f.file_field :image %>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :name, class: "required-a col-md-3" %>
+              <%= f.text_field :name, autofocus: true, class: "form-control my-4 col-md-9 column" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :profile, class: "required-a col-md-3" %>
+              <%= f.text_area :profile, autofocus: true, rows: 5, class: "form-control my-4 col-md-9 column" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+                <%= f.submit "更新", class: "col-md-2 btn btn-primary mx-3" %>
+            </div>
+          </div>
+        <% end %>
+
       </div>
-
-      <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %>
-      </div>
-
-      <div class="field">
-        <%= f.label :profile %><br />
-        <%= f.text_area :profile, autofocus: true %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Update" %>
-      </div>
-    <% end %>
-
-    <%= link_to "Back", :back %>
+    </div>
     </div>
   </div>
 </div>

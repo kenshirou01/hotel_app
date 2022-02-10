@@ -4,11 +4,8 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @user = current_user
-
-    # if params[:q] == nil
     @search = Room.ransack(params[:q])
     @rooms = @search.result
-
   end
 
   protected

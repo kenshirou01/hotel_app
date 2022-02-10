@@ -1,30 +1,31 @@
-<h3>予約済みルーム一覧</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>ルーム画像</th>
-      <th>ルーム名</th>
-      <th>ルーム紹介</th>
-      <th>合計料金</th>
-      <th>開始日</th>
-      <th>終了日</th>
-      <th>予約確定日時</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reservations.each do |reservation| %>
-    <% if reservation.user_id == @user.id %>
-      <tr>
-        <td><%= image_tag(reservation.room.room_image.to_s, class: "room-posts-image") %></td>
-        <td><%= link_to (reservation.room.room_name), reservation %></td>
-        <td><%= reservation.room.room_introduction %></td>
-        <td>¥<%= reservation.total_amount %></td>
-        <td><%= reservation.start_date %></td>
-        <td><%= reservation.end_date %></td>
-        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+<div class="container-fiuld reservations">
+  <h4 class="pb-4">予約済みルーム一覧</h4>
+  <table>
+    <thead>
+      <tr class="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>合計料金</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>予約確定日時</th>
       </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+      <% if reservation.user_id == @user.id %>
+        <tr>
+          <td><%= image_tag(reservation.room.room_image.to_s, class: "room-posts-image") %></td>
+          <td class="posts-name"><%= link_to (reservation.room.room_name), reservation %></td>
+          <td class="posts-content"><%= reservation.room.room_introduction %></td>
+          <td class="price-icon">¥<%= reservation.total_amount %></td>
+          <td><%= reservation.start_date %></td>
+          <td><%= reservation.end_date %></td>
+          <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

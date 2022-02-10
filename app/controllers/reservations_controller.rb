@@ -36,9 +36,6 @@ class ReservationsController < ApplicationController
     else
       redirect_to room_path(@reservation.room_id)
     end
-
-  binding.pry
-
   end
 
   def show

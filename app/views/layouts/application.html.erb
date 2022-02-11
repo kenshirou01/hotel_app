@@ -6,11 +6,77 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="header">
+      <div class="header_inner">
+        <div class="header-left-nav">
+
+          <%= link_to image_tag("sait_logo.png"), users_path %>
+
+          <%= search_form_for @search, url: search_rooms_path do |f| %>
+            <div class="header-sharch d-lg-inline-block">
+              <%= f.search_field :room_address_cont, placeholder: "エリア", :id => 'area', :class => 'form-control' %>
+            </div>
+            <div class="header-sharch d-lg-inline-block">
+              <%= f.search_field :room_introduction_or_room_name_or_room_address_cont, placeholder: "キーワード", :id => 'area', :class => 'form-control' %>
+            </div>
+              <%= f.submit '検索', :class => "d-none" %>
+          <% end %>
+        </div>
+
+        <div class = "header-right-nav" >
+          <% if user_signed_in? %>
+
+            <div class = "nav-item d-sm-inline-block">
+              <%= current_user.name %>
+            </div>
+
+            <div class = "nav-item">
+              <label for="toggle" onclick=""  for="menuToggle">
+                <% if @user.image? %>
+                  <%= image_tag(@user.image.url, class: "host-icon p-1") %>
+                <% else %>
+                  <%= image_tag("default_icon.jpeg",class: "host-icon p-1") %>
+                <% end %>
+              </label>
+
+              <input type="checkbox" id="toggle" autocomplete="off">
+                <ul class = "menu_list" >
+                  <li>
+                    <%= link_to "ルーム登録", new_room_path %>
+                  </li>
+                  <li>
+                    <%= link_to "登録済みルーム一覧", rooms_path %>
+                  </li>
+                  <li>
+                    <%= link_to "予約済みルーム一覧", reservations_path %>
+                  </li>
+                  <li>
+                    <%= link_to "設定", users_show_path %>
+                  </li>
+                  <li>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  </li>
+                </ul>
+
+          <% else %>
+
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary my-2 mx-3" %>
+                <%= link_to "登録する", new_user_registration_path, class: "btn btn-secondary" %>
+
+              </div>
+          <% end %>
+        </div>
+      </div>
+
+    </header>
+    <footer class = "footer" >
+      <p id="test">@ 2021 Kenshirou.Fjisawa.</p>
+    </footer>
     <%= yield %>
   </body>
 </html>

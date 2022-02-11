@@ -1,0 +1,61 @@
+<div class="container-fiuld user">
+  <div class="row">
+    <%= render "shared/said_room_menu" %>
+    <div class="col-md-10 user-view">
+      <div class="user-view-box">
+        <%= form_with model: @room do |f| %>
+        <%= f.hidden_field :user_id, value: @user.id %>
+
+          <div class="update-content">
+            <div class="row">
+              <h5>ルーム情報登録</h5>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :room_name, "ルーム名", class: "col-md-3 required-a" %>
+              <%= f.text_field :room_name, placeholder: "ルーム名を入力", class: "form-control mb-4 col-md-9" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :room_introduction, "ルーム紹介", class: "col-md-3 required-a" %>
+              <%= f.text_area :room_introduction, placeholder: "ルーム説明を入力", rows: 5, class: "form-control my-4 col-md-9 column" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :room_price, "料金", class: "col-md-3 required-a" %>
+              <%= f.number_field :room_price, placeholder: "1日あたりの料金を入力", class: "form-control mb-4 col-md-9" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :room_address, "住所", class: "col-md-3 required-a" %>
+              <%= f.text_field :room_address, placeholder: "住所を入力", class: "form-control mb-4 col-md-9" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :room_image, "ルーム画像", class: "required-a col-md-3" %>
+              <%= f.file_field :room_image, class: "my-4 col-md-9 column" %>
+            </div>
+          </div>
+
+          <div class="update-content">
+            <div class="row">
+                <%= f.submit "登録", class: "col-md-2 btn btn-primary mx-3" %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
